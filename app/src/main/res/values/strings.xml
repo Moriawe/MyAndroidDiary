@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyDiary</string>
+
+    <!-- LOGIN SCREEN -->
+    <string name="login_header">Login</string>
+
+    <!-- DAILY STATS SCREEN -->
+    <string name="daily_stats_header">My daily stats</string>
+</resources>
