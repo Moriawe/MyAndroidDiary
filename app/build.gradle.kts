@@ -58,6 +58,7 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -74,9 +75,13 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Dagger / Hilt
     implementation(libs.dagger.hilt)
     implementation(libs.dagger.hilt.compiler)
     implementation(libs.hilt.compose)
+
+    // Biometric authentication
+    implementation(libs.androidx.biometric)
 
     // Room
     implementation(libs.androidx.room.ktx)

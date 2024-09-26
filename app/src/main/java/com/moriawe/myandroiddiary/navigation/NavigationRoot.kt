@@ -1,9 +1,13 @@
 package com.moriawe.myandroiddiary.navigation
 
+import MainViewModel
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.asFlow
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -18,11 +22,13 @@ import com.moriawe.myandroiddiary.presentation.login.LoginViewModel
 fun NavigationRoot(
     navController: NavHostController,
     innerPadding: PaddingValues,
-    isLoggedIn: Boolean
+    mainViewModel: MainViewModel,
+    onAuthentication: () -> Unit,
 ) {
+
     NavHost(
         navController = navController,
-        startDestination = if (isLoggedIn) Route.DailyStatsRoute.route else Route.LoginRoute.route,
+        startDestination = Route.LoginRoute.route,
         modifier = Modifier.padding(innerPadding)
     ) {
         //authGraph(navController)
@@ -31,7 +37,7 @@ fun NavigationRoot(
             LoginScreenRoot(
                 viewModel = LoginViewModel(),
                 onLogin = {
-                    navController.navigate(Route.DailyStatsRoute.route)
+                    onAuthentication()
                 }
             )
         }
